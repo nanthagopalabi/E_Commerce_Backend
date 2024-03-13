@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt');
-const Seller = require('../models/sellerSchema.js');
+const Seller = require('../models/sellerSchema.js')
 const { createNewToken } = require('../utils/token.js');
 
 const sellerRegister = async (req, res) => {
@@ -36,6 +36,7 @@ const sellerRegister = async (req, res) => {
         }
     } catch (err) {
         res.status(500).json(err);
+        console.log(err);
     }
 };
 
@@ -54,7 +55,7 @@ const sellerLogIn = async (req, res) => {
                     token: token
                 };
 
-                res.send(seller);
+                res.send({message: "Successfully loggedin"});
             } else {
                 res.send({ message: "Invalid password" });
             }

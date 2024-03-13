@@ -80,4 +80,4 @@ const CustomerSchema = new mongoose.Schema({
 
  const Customer= mongoose.model("Customer", CustomerSchema);
 
- module.exports =  {Customer}
+ module.exports = Customer;
