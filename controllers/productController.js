@@ -29,15 +29,16 @@ const getProducts = async (req, res) => {
 const getSellerProducts = async (req, res) => {
     try {
         let products = await Product.find({ seller: req.params.id })
+        console.log(products)
         if (products.length > 0) {
             res.send(products)
         } else {
-            res.send({ message: "No products found" });
             console.log("No Products")
+            res.send({ message: "No products found" });
         }
     } catch (err) {
-        res.status(500).json(err);
         console.log("error occured")
+        res.status(500).json(err);
     }
 };
 
