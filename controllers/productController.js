@@ -33,9 +33,11 @@ const getSellerProducts = async (req, res) => {
             res.send(products)
         } else {
             res.send({ message: "No products found" });
+            console.log("No Products")
         }
     } catch (err) {
         res.status(500).json(err);
+        console.log("error occured")
     }
 };
 
