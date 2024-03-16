@@ -15,8 +15,8 @@ const productCreate = async (req, res) => {
 
 const getProducts = async (req, res) => {
     try {
-        let products = await Product.find().populate("seller", "shopName");
-        console.log("products", products)
+        let products = await Product.find();
+        // .populate("seller", "shopName")
         if (products.length > 0) {
             res.send(products);
         } else {
@@ -24,7 +24,6 @@ const getProducts = async (req, res) => {
         }
     } catch (err) {
         res.status(500).json(err);
-        console.log("error occured")
     }
 };
 
