@@ -1,10 +1,10 @@
 const Product = require("../models/productSchema");
 const Customer = require("../models/customerSchema");
+// const Seller = require("../models/sellerSchema");
 
 const productCreate = async (req, res) => {
     try {
         const product = new Product(req.body)
-
         let result = await product.save();
 
         res.send(result);
@@ -15,17 +15,21 @@ const productCreate = async (req, res) => {
 
 const getProducts = async (req, res) => {
     try {
-        let products = await Product.find();
-        // .populate("seller", "shopName")
+        let products = await Product.find()
+            .populate("seller", "shopName");
+
         if (products.length > 0) {
             res.send(products);
         } else {
             res.send({ message: "No products found" });
         }
     } catch (err) {
+        console.log("error occurred:", err);
         res.status(500).json(err);
     }
 };
+
+
 
 const getSellerProducts = async (req, res) => {
     try {
@@ -33,6 +37,7 @@ const getSellerProducts = async (req, res) => {
         console.log(products)
         if (products.length > 0) {
             res.send(products)
+    
         } else {
             console.log("No Products")
             res.send({ message: "No products found" });
@@ -60,6 +65,7 @@ const getProductDetail = async (req, res) => {
             res.send({ message: "No product found" });
         }
     } catch (err) {
+        console.log("error occured1")
         res.status(500).json(err);
     }
 }

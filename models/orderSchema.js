@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const OrderSchema = new mongoose.Schema({
+const orderSchema = new mongoose.Schema({
     buyer: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "customer",
@@ -116,6 +116,4 @@ const OrderSchema = new mongoose.Schema({
     },
 });
 
-const Order = mongoose.model("Order", OrderSchema);
-
-module.exports = Order;
+module.exports = mongoose.model("order", orderSchema);
